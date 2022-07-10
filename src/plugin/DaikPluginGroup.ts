@@ -30,33 +30,34 @@ export class DaikPluginGroup<RA extends DaikCommandRunArgs, R extends DaikComman
 		}
 	}
 
-	public preCommand(command: DaikCommand<RA, R, P>, interaction: Interaction<CacheType>, args: RA): RA {
+	public async preCommand(command: DaikCommand<RA, R, P>, interaction: Interaction<CacheType>, args: RA): Promise<RA> {
 		for (const preCommand of this.registeredModules.preCommand)
-			args = preCommand(command, interaction, args);
+			args = await preCommand(command, interaction, args);
 
 		return args;
 	}
 
-	public postCommand(command: DaikCommand<RA, R, P>, interaction: Interaction<CacheType>, args: RA, result: R): R {
+	public async postCommand(command: DaikCommand<RA, R, P>, interaction: Interaction<CacheType>, args: RA, result: R): Promise<R> {
 		for (const postCommand of this.registeredModules.postCommand)
-			result = postCommand(command, interaction, args, result);
+			result = await postCommand(command, interaction, args, result);
 
 		return result;
 	}
-	public preCommandRegister(command: DaikCommand<RA, R, P>): DaikCommand<RA, R, P> {
+
+	public async preCommandRegister(command: DaikCommand<RA, R, P>): Promise<DaikCommand<RA, R, P>> {
 		for (const preCommandRegister of this.registeredModules.preCommandRegister)
-			command = preCommandRegister(command);
+			command = await preCommandRegister(command);
 
 		return command;
 	}
 
-	public postPluginRegister(): void {
+	public async postPluginRegister(): Promise<void> {
 		for (const postPluginRegister of this.registeredModules.postPluginRegister)
-			postPluginRegister();
+			await postPluginRegister();
 	}
 
-	public onError(error: unknown): void {
+	public async onError(error: unknown): Promise<void> {
 		for (const onError of this.registeredModules.onError)
-			onError(error);
+			await onError(error);
 	}
 }

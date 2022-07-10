@@ -1,0 +1,1 @@
+export type Async<T> = T | Promise<T>;

@@ -18,8 +18,10 @@ export class DaikClient<RA extends DaikCommandRunArgs, R extends DaikCommandResu
 		this.createDefaultRunArgs = options.createDefaultArgs;
 	}
 
-	public registerPlugin(plugin: DaikPlugin<RA, R, P>): void {
+	public async registerPlugin(plugin: DaikPlugin<RA, R, P>): Promise<void> {
 		this.plugin = plugin;
+
+		await this.plugin.postPluginRegister();
 	}
 
 	public init(): void {
@@ -34,13 +36,13 @@ export class DaikClient<RA extends DaikCommandRunArgs, R extends DaikCommandResu
 		});
 	}
 
-	public registerCommands(commands: DaikCommand<RA, R, P>[] | DaikCommand<RA, R, P>): void {
+	public async registerCommands(commands: DaikCommand<RA, R, P>[] | DaikCommand<RA, R, P>): Promise<void> {
 		this.checkPluginRegistered();
 
 		if (!Array.isArray(commands)) commands = [commands];
 
 		for (let command of commands) {
-			command = this.plugin!.preCommandRegister(command);
+			command = await this.plugin!.preCommandRegister(command);
 
 			this.commands.set(command.name, command);
 		}
@@ -66,14 +68,14 @@ export class DaikClient<RA extends DaikCommandRunArgs, R extends DaikCommandResu
 
 		try {
 			let args = this.createDefaultRunArgs();
-			args = this.plugin!.preCommand(command, interaction, args);
+			args = await this.plugin!.preCommand(command, interaction, args);
 
 			let result = await (command as unknown as DaikCommand<RA, R, P> & { run: DaikCommandRunFunc<RA, R, P, DaikCommand<RA, R, P>, Interaction> }).run(interaction, this, args);
-			result = this.plugin!.postCommand(command, interaction, args, result);
+			result = await this.plugin!.postCommand(command, interaction, args, result);
 
 			return result;
 		} catch (err) {
-			this.plugin!.onError(err);
+			await this.plugin!.onError(err);
 		}
 	}
 
