@@ -28,6 +28,7 @@
 	"scripts": {
 		"build": "tsc",
 		"lint": "eslint --cache --fix",
-		"start": "npm run lint && npm run build && node build/index.js"
+		"start": "npm run lint && npm run build && node build/index.js",
+		"prepare": "npm run lint && npm run build"
 	}
 }
