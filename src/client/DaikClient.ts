@@ -57,12 +57,7 @@ export class DaikClient<RA extends DaikCommandRunArgs, R extends DaikCommandResu
 	}
 
 	public getAllCommandData(): RESTPostAPIApplicationCommandsJSONBody[] {
-		const commands = [];
-
-		for (const command of this.commands.values())
-			commands.push(command.data);
-
-		return commands;
+		return [...this.commands.values()].map((command) => command.data);
 	}
 
 	private async runCommand(commandName: string, interaction: Interaction): Promise<R | void> {
