@@ -95,6 +95,6 @@ export class DaikClient<RA extends DaikCommandRunArgs, R extends DaikCommandResu
 	}
 
 	private checkPluginRegistered(): void {
-		if (!this.plugin) throw new Error('[NO_PLUGIN]: No plugin has been registered. Daik requires a plugin to be registered, if you don\'t want to use a plugin, create an empty plugin.');
+		if (!this.plugin) throw new Error('[NO_PLUGIN]: No plugin has been registered. Daik requires a plugin to be registered, if you don\'t want to use a plugin, register the built-in DaikBlankPlugin.');
 	}
 }
