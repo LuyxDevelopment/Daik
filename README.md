@@ -22,3 +22,5 @@ const client = new DaikClient<DaikPermissionPluginCommandRunArgs, DaikCommandRes
 	}
 });
 
+client.registerPlugin(new DaikPermissionPlugin());
+
