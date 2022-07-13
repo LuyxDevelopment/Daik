@@ -6,7 +6,6 @@ import { Async } from '../../typings/util.js';
 import { DaikPlugin } from '../DaikPlugin.js';
 
 export interface DaikPermissionPluginCommandRunArgs extends DaikCommandRunArgs {
-	hasPermission: boolean;
 	missingPermissions: PermissionString[];
 }
 
@@ -18,19 +17,16 @@ export class DaikPermissionPlugin<RA extends DaikPermissionPluginCommandRunArgs,
 	protected registrableModules: DaikPluginModule[] = ['preCommand'];
 
 	public preCommand(command: DaikCommand<RA, R, P>, interaction: Interaction<CacheType>, args: RA): Async<RA> {
-		if (command.props.permissions.length === 0) {
-			args.hasPermission = true;
-		} else if (!interaction.inCachedGuild()) {
-			args.hasPermission = false;
-			args.allowedToRun = false;
-		} else {
-			args.hasPermission = true;
+		if (command.props.permissions.length === 0) return args;
 
+		if (!interaction.inCachedGuild()) {
+			args.allowedToRun = false;
+			args.missingPermissions = command.props.permissions;
+		} else {
 			for (const permission of command.props.permissions) {
 				if (!interaction.memberPermissions.has(permission)) {
-					args.hasPermission = false;
-					args.missingPermissions.push(permission);
 					args.allowedToRun = false;
+					args.missingPermissions.push(permission);
 				}
 			}
 		}
