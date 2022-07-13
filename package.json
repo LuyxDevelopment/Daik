@@ -2,6 +2,7 @@
 	"name": "daik",
 	"version": "1.0.0",
 	"description": "discord.js command handler library",
+	"main": "build/index.js",
 	"exports": {
 		".": "./build/index.js",
 		"./plugins": "./build/plugins.js"
