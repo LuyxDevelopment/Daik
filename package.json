@@ -3,6 +3,9 @@
 	"version": "1.0.0",
 	"description": "discord.js command handler library",
 	"main": "build/index.js",
+	"exports": {
+		"plugins": "./build/plugins.js"
+	},
 	"author": "Luyx",
 	"license": "MIT",
 	"type": "module",
