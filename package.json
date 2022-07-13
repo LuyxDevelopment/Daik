@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "discord.js command handler library",
 	"exports": {
-		"./core": "./build/index.js",
+		".": "./build/index.js",
 		"./plugins": "./build/plugins.js"
 	},
 	"author": "Luyx",
