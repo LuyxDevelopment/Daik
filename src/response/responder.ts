@@ -1,4 +1,4 @@
-import { Replyable, Responses } from '../typings/response.js';
+import { Replyable, Responses } from './typings/response.js';
 import { Responded } from './responded.js';
 
 export class Responder<R extends Responses> {
