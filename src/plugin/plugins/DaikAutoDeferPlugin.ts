@@ -4,11 +4,11 @@ import { DaikCommandRunArgs, DaikCommandResult, DaikCommandProps } from '../../t
 import { DaikPluginModule } from '../../typings/daik_plugin.js';
 import { DaikPlugin } from '../DaikPlugin.js';
 
-export interface DaikAutoDeferCommandProps extends DaikCommandProps {
+export interface DaikAutoDeferPluginCommandProps extends DaikCommandProps {
 	ephemeral: boolean;
 }
 
-export class DaikAutoDeferPlugin<RA extends DaikCommandRunArgs, R extends DaikCommandResult, P extends DaikAutoDeferCommandProps> extends DaikPlugin<RA, R, P> {
+export class DaikAutoDeferPlugin<RA extends DaikCommandRunArgs, R extends DaikCommandResult, P extends DaikAutoDeferPluginCommandProps> extends DaikPlugin<RA, R, P> {
 	protected registrableModules: DaikPluginModule[] = ['preCommand'];
 
 	public async preCommand(command: DaikCommand<RA, R, P>, interaction: Interaction<CacheType>, args: RA): Promise<RA> {
