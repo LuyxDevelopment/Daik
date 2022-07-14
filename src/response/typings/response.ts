@@ -4,7 +4,8 @@ export type Replyable = ButtonInteraction | CommandInteraction | SelectMenuInter
 
 export type ResponseOptions = Omit<MessageOptions, 'flags'>;
 
-export type Response = (...args: unknown[]) => ResponseOptions;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type Response = (...args: any[]) => ResponseOptions;
 
 export interface Responses {
 	[key: string]: Response;
