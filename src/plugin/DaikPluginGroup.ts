@@ -56,8 +56,8 @@ export class DaikPluginGroup<RA extends DaikCommandRunArgs, R extends DaikComman
 			await postPluginRegister();
 	}
 
-	public async onError(error: unknown): Promise<void> {
+	public async onError(command: DaikCommand<RA, R, P>, interaction: Interaction, error: unknown): Promise<void> {
 		for (const onError of this.registeredModules.onError)
-			await onError(error);
+			await onError(command, interaction, error);
 	}
 }
