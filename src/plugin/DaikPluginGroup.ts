@@ -23,7 +23,7 @@ export class DaikPluginGroup<RA extends DaikCommandRunArgs, R extends DaikComman
 
 	public registerPlugin(plugin: DaikPlugin<RA, R, P>): void {
 		for (const module of plugin.getRegistrableModules()) {
-			this.registeredModules[module].push(plugin[module] as never /* cast to never to avoid incorrect ts error */);
+			this.registeredModules[module].push(plugin[module].bind(plugin) as never /* cast to never to avoid incorrect ts error */);
 
 			if (!this.registrableModules.includes(module))
 				this.registrableModules.push(module);
