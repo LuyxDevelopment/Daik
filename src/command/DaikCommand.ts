@@ -1,4 +1,4 @@
-import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9.js';
+import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9';
 import { DaikCommandOptions, DaikCommandProps, DaikCommandResult, DaikCommandRunArgs } from '../typings/daik_command.js';
 
 export class DaikCommand<RA extends DaikCommandRunArgs, R extends DaikCommandResult, P extends DaikCommandProps> {

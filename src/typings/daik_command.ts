@@ -1,4 +1,4 @@
-import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9.js';
+import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9';
 import { CommandInteraction, Interaction, UserContextMenuInteraction } from 'discord.js';
 import { DaikClient } from '../client/DaikClient.js';
 import { DaikCommand } from '../command/DaikCommand.js';
