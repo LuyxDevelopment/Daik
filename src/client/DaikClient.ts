@@ -1,4 +1,4 @@
-import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9.js';
+import { RESTPostAPIApplicationCommandsJSONBody } from 'discord-api-types/v9';
 import { Client, Interaction } from 'discord.js';
 import { readdirSync } from 'fs';
 import path from 'path';
