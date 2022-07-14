@@ -49,10 +49,10 @@ export class DaikClient<RA extends DaikCommandRunArgs, R extends DaikCommandResu
 	}
 
 	public async loadCommandDirectory(directory: string): Promise<void> {
-		const files = this.getFilesFromDirectory(directory);
+		const files = this.getFilesFromDirectory(path.join(process.cwd(), directory));
 
 		for (const file of files) {
-			const command = (await import('../../' + file)).default;
+			const command = (await import(file)).default;
 
 			this.registerCommands(command);
 		}
