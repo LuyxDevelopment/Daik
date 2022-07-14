@@ -34,7 +34,7 @@ export abstract class DaikPlugin<RA extends DaikCommandRunArgs, R extends DaikCo
 	}
 
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public onError(error: unknown): Async<void> {
+	public onError(command: DaikCommand<RA, R, P>, interaction: Interaction, error: unknown): Async<void> {
 
 	}
 }

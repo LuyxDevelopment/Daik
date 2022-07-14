@@ -19,6 +19,7 @@ export interface DaikCommandResult {
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface DaikCommandProps { }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export interface DaikCommandOptions<RA extends DaikCommandRunArgs, R extends DaikCommandResult, P extends DaikCommandProps> {
 	name: string;
 	props: P;
