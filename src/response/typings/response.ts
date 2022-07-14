@@ -1,6 +1,6 @@
-import { ButtonInteraction, CommandInteraction, SelectMenuInteraction, ModalSubmitInteraction, MessageComponentInteraction, ContextMenuInteraction, MessageOptions } from 'discord.js';
+import { ButtonInteraction, MessageOptions, CacheType, InteractionResponseFields } from 'discord.js';
 
-export type Repliable = ButtonInteraction | CommandInteraction | SelectMenuInteraction | ModalSubmitInteraction | MessageComponentInteraction | ContextMenuInteraction;
+export type Repliable = ButtonInteraction<CacheType> & InteractionResponseFields<CacheType>;
 
 export type ResponseOptions = Omit<MessageOptions, 'flags'>;
 
