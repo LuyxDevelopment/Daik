@@ -2,6 +2,10 @@ import { ButtonInteraction, CommandInteraction, SelectMenuInteraction, ModalSubm
 
 export type Replyable = ButtonInteraction | CommandInteraction | SelectMenuInteraction | ModalSubmitInteraction | MessageComponentInteraction | ContextMenuInteraction;
 
+export type ResponseOptions = Omit<MessageOptions, 'flags'>;
+
+export type Response = (...args: unknown[]) => Omit<ResponseOptions, 'flags'>;
+
 export interface Responses {
-	[key: string]: (...args: unknown[]) => Omit<MessageOptions, 'flags'>;
+	[key: string]: Response;
 }
