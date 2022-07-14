@@ -1,3 +1,3 @@
-export * from './plugin/plugins/DaikBlankPlugin.js';
-export * from './plugin/plugins/DaikErrorLogPlugin.js';
-export * from './plugin/plugins/DaikPermissionPlugin.js';
+export * from './DaikBlankPlugin.js';
+export * from './DaikErrorLogPlugin.js';
+export * from './DaikPermissionPlugin.js';
