@@ -1,11 +1,11 @@
-import { Replyable, Responses } from './typings/response.js';
+import { Repliable, Responses } from './typings/response.js';
 import { Responder } from './responder.js';
 
 export class Responded<R extends Responses> {
 	private readonly responder: Responder<R>;
-	private readonly interaction: Replyable;
+	private readonly interaction: Repliable;
 
-	constructor(responder: Responder<R>, interaction: Replyable) {
+	constructor(responder: Responder<R>, interaction: Repliable) {
 		this.responder = responder;
 		this.interaction = interaction;
 	}

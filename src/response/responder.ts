@@ -1,4 +1,4 @@
-import { Replyable, Responses } from './typings/response.js';
+import { Repliable, Responses } from './typings/response.js';
 import { Responded } from './responded.js';
 
 export class Responder<R extends Responses> {
@@ -12,7 +12,7 @@ export class Responder<R extends Responses> {
 		return this.responses[key]!(...args) as ReturnType<R[K]>;
 	}
 
-	public async send<K extends keyof R>(interaction: Replyable, key: K, ...args: Parameters<R[K]>): Promise<Responded<R>> {
+	public async send<K extends keyof R>(interaction: Repliable, key: K, ...args: Parameters<R[K]>): Promise<Responded<R>> {
 		const reply = this.create(key, ...args);
 
 		if (interaction.deferred) {
