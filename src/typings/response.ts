@@ -4,7 +4,7 @@ export type Replyable = ButtonInteraction | CommandInteraction | SelectMenuInter
 
 export type ResponseOptions = Omit<MessageOptions, 'flags'>;
 
-export type Response = (...args: unknown[]) => Omit<ResponseOptions, 'flags'>;
+export type Response = (...args: unknown[]) => ResponseOptions;
 
 export interface Responses {
 	[key: string]: Response;
