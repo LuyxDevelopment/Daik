@@ -1,6 +1,6 @@
-import { ButtonInteraction, MessageOptions, CacheType, InteractionResponseFields } from 'discord.js';
+import { MessageOptions, Interaction, CacheType, InteractionResponseFields } from 'discord.js';
 
-export type Repliable = ButtonInteraction<CacheType> & InteractionResponseFields<CacheType>;
+export type Repliable = Interaction<CacheType> & InteractionResponseFields<CacheType>;
 
 export type ResponseOptions = Omit<MessageOptions, 'flags'>;
 
