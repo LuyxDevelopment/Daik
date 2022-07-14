@@ -75,7 +75,7 @@ export class DaikClient<RA extends DaikCommandRunArgs, R extends DaikCommandResu
 
 			return result;
 		} catch (err) {
-			await this.plugin!.onError(err);
+			await this.plugin!.onError(command, interaction, err);
 		}
 	}
 
