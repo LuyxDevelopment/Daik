@@ -4,7 +4,7 @@
 	"description": "discord.js command handler library",
 	"exports": {
 		".": "./build/index.js",
-		"./plugins": "./build/plugins.js"
+		"./plugins": "./build/plugin/plugins/index.js"
 	},
 	"main": "build/index.js",
 	"author": "Luyx",
